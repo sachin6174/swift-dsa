@@ -1,15 +1,44 @@
-class Node{
+// if recursion is more east to implement then do using recursion and if iteration feel more easy to implement then go with loops
+
+public class Node{
     var data : Int
     var next : Node?
-    init(_ data: Int ,_ next: Node? = nil){
+
+    public init() {
+        self.data = 0;
+        self.next = nil;
+    }
+
+    public init(_ data: Int ,_ next: Node? = nil){
         self.data = data
         self.next = next
     }
+    // above constructor already implemented this constructor
+    // public init(_ val: Int) {
+    //     self.data = val;
+    //     self.next = nil; 
+    // }
+
 }
 
-let node3 = Node(3)
-let node2 = Node(2,node3)
-let node1 = Node(1,node2)
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public var val: Int
+ *     public var next: ListNode?
+ *     public init() { self.data = 0; self.next = nil; }
+ *     public init(_ val: Int) { self.data = val; self.next = nil; }
+ *     public init(_ val: Int, _ next: ListNode?) { self.data = val; self.next = next; }
+ * }
+ */
+
+// if let input = readLine(), let number = Int(input) {
+//     print("You entered: \(number)")
+// } else {
+//     print("Invalid number")
+// }
+
 
 func printLLRecursive(_ head: Node?){
     if head == nil{
@@ -28,17 +57,7 @@ func printLLIterative(_ head: Node?){
 
 }
 
-// printLLRecursive(node1)
-// printLLIterative(node1)
-
-
-// if let input = readLine(), let number = Int(input) {
-//     print("You entered: \(number)")
-// } else {
-//     print("Invalid number")
-// }
-
-func llInput() -> Node? {
+func llInputIterative() -> Node? {
     var head : Node? = nil    // Specify the type explicitly  as its a custom data type
      var tail : Node? = nil
     var inputValue = -1
@@ -64,5 +83,41 @@ func llInput() -> Node? {
     return head
 }
 
-let myll = llInput()
+func constructALinkedListFromArray(_ array : [Int]) -> Node? {
+    //TODO
+}
+
+func lengthOfALinkedListRecursive(_ head: Node?) -> Int{
+    if head == nil {
+        return 0
+    }
+    return lengthOfALinkedListRecursive(head!.next) + 1
+}
+
+func lengthOfALinkedListIterative(_ head: Node?) -> Int{
+    var head = head
+    var length = 0
+    while head != nil{
+        length += 1
+        head = head!.next
+    }
+    return length
+}
+
+
+
+
+let node3 = Node(3)
+let node2 = Node(2,node3)
+let node1 = Node(1,node2)
+
+printLLRecursive(node1)
+printLLIterative(node1)
+print()
+print(lengthOfALinkedListRecursive(node1))
+print(lengthOfALinkedListIterative(node1))
+print()
+let myll = llInputIterative()
 printLLRecursive(myll)
+
+
